@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #F7F7F7;
+  --color-surface: #FFFFFF;
+  --color-black: #111111;
+  --color-dark: #1F1F1F;
+  --color-gray: #6B7280;
+  --color-light: #E5E7EB;
+  --color-border: #E5E7EB;
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+  --color-info: #2563EB;
+  --font-family-sans: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+}
+
+body {
+  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  background-color: #F7F7F7;
+  color: #111111;
+  line-height: 1.7; /* Comfortable Arabic line height */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+p, span, div {
+  line-height: 1.7;
+}
+
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F7F7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Custom utility classes */
+.sidebar-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* RTL adjustments for slide animations */
+[dir="rtl"] .slide-in-right {
+  animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[dir="rtl"] .slide-in-left {
+  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Table styles */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.data-table th {
+  background-color: #FAFAFA;
+  font-weight: 600;
+  font-size: 0.8125rem; /* slightly larger */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6B7280;
+  padding: 1rem 1.25rem; /* more breathing room */
+  text-align: right;
+  border-bottom: 1px solid #E5E7EB;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 1.25rem 1.25rem; /* more row height and spacing */
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 0.9rem;
+  color: #1F1F1F;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.data-table tbody tr:hover {
+  background-color: #F9FAFB;
+}
+
+/* Toast animations */
+.toast-enter {
+  animation: toastSlideIn 0.3s ease-out;
+}
+
+@keyframes toastSlideIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Modal overlay */
+.modal-overlay {
+  animation: overlayFadeIn 0.2s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  animation: modalSlideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* POS specific styles */
+.pos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .pos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
